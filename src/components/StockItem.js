@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function StockItems({ name, price, pieces, quantity, addToBag })
+function StockItems({ name, price, imgSrc, pieces, quantity, id, addToBag }) {
+  const []
+}

@@ -9,6 +9,8 @@ class InventoryControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      newItemFormVOP: false,
+      itemDetailVOP: false,
       selectedId: null,
       masterInventoryList: [
         {
@@ -46,6 +48,34 @@ class InventoryControl extends React.Component {
       ],
       bagItems: []
     };
+  }
+
+  handleBagClick = () => {
+    this.setState(prevState => ({ newItemFormVOP: !prevState.newItemFormVOP}));
+  }
+
+  handleUpdateClick = (newInventory) => {
+    const newMasterInventoryList = this.state.masterInventoryList.concat(newInventory);
+    this.setState({
+      masterInventoryList: newMasterInventoryList,
+      newItemFormVOP: false,
+    });
+  };
+
+  handleUpdate = (updatedInventory) => {
+    const updatedList = this.state.masterInventoryList.map(item => {
+      if (item.id === this.state.selectedId) {
+        return {
+          ...item,
+          name: updatedInventory.name,
+          price: updatedInventory.price,
+          pieces: updatedInventory.pieces,
+          quantity:updatedInventory.quantity,
+          imgSrc: updatedInventory.imgSrc
+        };
+      }
+      return item;
+    })
   }
 
   render() {

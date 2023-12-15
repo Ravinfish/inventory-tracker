@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 function StockList(props){
   return (
     <React.Fragment>
-      <hr/>
+      <hr />
       {props.itemsInStock.map((item, index) =>
       <StockItem
       imgSrc={item.imgSrc}
@@ -14,14 +14,15 @@ function StockList(props){
       pieces={item.pieces}
       quantity={item.quantity}
       id={item.id}
-      addToBag={item.addToBag}
+      addToBag={props.addToBag}
       key={index}/>
       )}
     </React.Fragment>
   );
 }
 StockList.propTypes = {
-  StockList: PropTypes.array
+  itemsInStock: PropTypes.array.isRequired,
+  addToBag: PropTypes.func.isRequired,
 };
 
 export default StockList;

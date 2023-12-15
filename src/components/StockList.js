@@ -24,4 +24,4 @@ StockList.PropTypes = {
   StockList: PropTypes.array
 };
 
-export default StockList
+export default StockList;

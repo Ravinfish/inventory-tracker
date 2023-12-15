@@ -18,7 +18,20 @@ function StockItems({ name, price, imgSrc, pieces, quantity, id, addToBag }) {
 
   return (
     <div id="stockItem">
-      
+      <img src={imgSrc} alt={name} />
+      <p>{name} - {price}</p>
+      <p>Quantity: {quantityRemaining}</p>
+      <button onClick={handleBagClick}>Add to Bag!</button>
+      <button onClick={handleUpdateClick}>Update Bag</button>
+      <hr />
     </div>
-  )
+  );
 }
+
+StockItems.propTypes = {
+  name: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequiredf,
+};
+
+export default StockItems;

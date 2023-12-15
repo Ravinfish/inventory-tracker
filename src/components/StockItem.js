@@ -31,7 +31,7 @@ function StockItems({ name, price, imgSrc, pieces, quantity, id, addToBag }) {
 StockItems.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequiredf,
+  id: PropTypes.string.isRequired,
 };
 
 export default StockItems;

@@ -20,7 +20,7 @@ function StockList(props){
     </React.Fragment>
   );
 }
-StockList.PropTypes = {
+StockList.propTypes = {
   StockList: PropTypes.array
 };
 

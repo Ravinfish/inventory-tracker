@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function StockItems({ name, price, imgSrc, pieces, quantity, id, addToBag, handleUpdate }) {
-  const [quantityRemaining, setQuantity] = useState(quantity);
+function StockItems({ name, price, imgSrc, quantity, id, addToBag, handleUpdate }) {
+  const [quantityRemaining, setQuantityRemaining] = useState(quantity);
 
   const handleBagClick = () => {
     if (quantityRemaining > 0) {
-      setQuantity(s => s - 1);
+      setQuantityRemaining((prevQuantity) => prevQuantity - 1);
       addToBag(name, price, id);
     } else {
 

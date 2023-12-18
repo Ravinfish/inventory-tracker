@@ -14,8 +14,8 @@ function StockList(props){
       pieces={item.pieces}
       quantityRemaining={item.quantity}
       id={item.id}
-      addToBag={() => props.addToBag(item.id)}
-      handleUpdate={() => props.handleUpdate(item.id)}
+      addToBag={props.addToBag}
+      handleUpdate={props.handleUpdate}
       key={index}/>
       )}
     </React.Fragment>

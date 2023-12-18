@@ -55,7 +55,7 @@ function NewStockDetail(props) {
 }
   
   NewStockDetail.propTypes = {
-    onNewItemCreation: PropTypes.func
+  
   };
 
   export default NewStockDetail;

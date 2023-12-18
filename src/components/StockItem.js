@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function StockItems({ name, price, imgSrc, pieces, quantity, id, addToBag }) {
+function StockItems({ name, price, imgSrc, pieces, quantity, id, addToBag, handleUpdate }) {
   const [quantityRemaining, setQuantity] = useState(quantity);
 
   const handleBagClick = () => {
@@ -9,11 +9,12 @@ function StockItems({ name, price, imgSrc, pieces, quantity, id, addToBag }) {
       setQuantity(s => s - 1);
       addToBag(name, price, id);
     } else {
+
     }
   };
 
   const handleUpdateClick = () => {
-    handleUpdateClick(id);
+    handleUpdate(id);
   };
 
   return (
@@ -22,7 +23,7 @@ function StockItems({ name, price, imgSrc, pieces, quantity, id, addToBag }) {
       <p>{name} - {price}</p>
       <p>Quantity: {quantityRemaining}</p>
       <button onClick={handleBagClick}>Add to Bag!</button>
-      <button onClick={handleUpdateClick}>Update Bag</button>
+      <button onClick={handleUpdateClick}>Update/View Bag Details</button>
       <hr />
     </div>
   );
@@ -32,6 +33,8 @@ StockItems.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  addToBag: PropTypes.func.isRequired,
+  handleUpdate: PropTypes.func.isRequired
 };
 
 export default StockItems;

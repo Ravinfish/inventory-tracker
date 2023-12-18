@@ -50,11 +50,11 @@ class InventoryControl extends React.Component {
     };
   }
 
-  handleBagClick = () => {
+  handleNewItemClick = () => {
     this.setState(prevState => ({ newItemFormVOP: !prevState.newItemFormVOP}));
   }
 
-  handleUpdateClick = (newInventory) => {
+  handleAddNewItemToInventoryClick = (newInventory) => {
     const newMasterInventoryList = this.state.masterInventoryList.concat(newInventory);
     this.setState({
       masterInventoryList: newMasterInventoryList,
@@ -62,7 +62,7 @@ class InventoryControl extends React.Component {
     });
   };
 
-  handleUpdate = (updatedInventory) => {
+  handleEditItem = (updatedInventory) => {
     const updatedList = this.state.masterInventoryList.map(item => {
       if (item.id === this.state.selectedId) {
         return {
@@ -75,21 +75,85 @@ class InventoryControl extends React.Component {
         };
       }
       return item;
-    })
+    });
+
+    this.setState({
+      masterInventoryList: updatedList,
+      itemDetailVOP: false
+    });
+  };
+
+  handleUpdateClick = (id) => {
+    this.setState((prevState) => ({
+      itemDetailVOP: !prevState.itemDetailVOP,
+      selectedId: id
+    }));
+  };
+
+  addToBag = (id) => {
+    const updatedList = this.state.masterInventoryList.map(item => {
+      if (item.id === id && item.quantity > 0) {
+        return {
+          ...item,
+          quantity: item.quantity - 1
+        };
+      }
+      return item;
+    });
+
+    this.setState({
+      masterInventoryList: updatedList
+    });
+  };
+
+  handleReturnToInventoryClick = ()=> {
+    if (this.state.newItemFormVOP) {
+      this.setState(prevState => ({ newItemFormVOP: !prevState.newItemFormVOP })); 
+    } else this.setState(prevState => ({ itemDetailVOP: !prevState.itemDetailVOP }));
   }
+
+ handleDeletedItem = (itemId) => {
+  this.setState((prevState) => ({
+    masterInventoryList: prevState.masterInventoryList.filter((item) => item.id !== itemId),
+    itemDetailVOP: false,
+  }));
+ };
 
   render() {
     let currentVisibleState = null;
-    let buttonText = "Items in Stock";
+    if (this.state.newItemFormVOP) {
     currentVisibleState = (
       <>
+        <NewStockDetail onNewItemCreation={this.handleAddNewItemToInventoryClick} />
+        <div className="new-item-button">
+          <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
+        </div>
+        </>)
+    } else if (this.state.itemDetailVOP) {
+      const selectedItem = this.state.masterInventoryList.find(
+        (item) => item.id === this.state.selectedId
+      );
+      currentVisibleState = (
+        <>
+          <StockDetail
+          onItemEdit={this.handleEditItem}
+          onDelete={this.handleDeletedItem}
+          selectedItemId={this.state.selectedId}
+          selectedDetails={selectedItem}
+          />
+          <div className="new-item-button">
+            <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
+          </div>
+      </>)
+    } else currentVisibleState = (
+      <>
         <StockList
-          addToBag={this.handleBagClick}
+          addToBag={this.addToBag}
           handleUpdate={this.handleUpdateClick}
           itemsInStock={this.state.masterInventoryList}
         />
-        <div>
-          <button>{buttonText}</button>
+        <div className="new-item-button">
+          <button onClick={this.handleNewItemClick}>New Stock Item</button>
         </div>
         </>)
 

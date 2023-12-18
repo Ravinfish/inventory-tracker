@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 function StockDetail(props) {
-  const { selectedItemId, selectedDetails } = props;
+  const { onItemEdit, onDelete } = props;
   function handleStockDetailSubmission(e) {
     e.preventDefault();
     const itemId = e.target.id.value;
@@ -17,39 +17,39 @@ function StockDetail(props) {
   }
 
   function handleDeletedItem() {
-    props.onDelete(selectedItemId)
+    props.onDelete(props.onItemEdit.id)
   }
 
   return (
     <React.Fragment>
       <div className="input-form">
-        <h2>Currently Viewing / Editing {selectedDetails.name}</h2>
+        <h2>Currently Viewing / Editing {onItemEdit.name}</h2>
         <form onSubmit={handleStockDetailSubmission}>
           <label>Name: </label>
           <input
             type="text"
             name="name"
-            defaultValue={selectedDetails.name} />
+            defaultValue={onItemEdit.name} />
           <label>Price: </label>
           <input
             type="text"
             name="price"
-            defaultValue={selectedDetails.price} />
+            defaultValue={onItemEdit.price} />
           <label>Pieces: </label>
           <input
             type="text"
             name="pieces"
-            defaultValue={selectedDetails.pieces} />
+            defaultValue={onItemEdit.pieces} />
           <label>Quantity: </label>
           <input
             type="number"
             name="quantity"
-            defaultValue={selectedDetails.quantity} />
+            defaultValue={onItemEdit.quantity} />
           <label>Image: </label>
           <input
             type="text"
             name="imgSrc"
-            defaultValue={selectedDetails.imgSrc} />
+            defaultValue={onItemEdit.imgSrc} />
           <br></br>
           <button type="submit">Save Changes</button>
         </form>
@@ -60,8 +60,6 @@ function StockDetail(props) {
 }
 
 StockDetail.propTypes = {
-  selectedItemId: PropTypes.string,
-  selectedDetails: PropTypes.object,
   onItemEdit: PropTypes.func,
   onDelete: PropTypes.func
 };

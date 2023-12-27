@@ -5,11 +5,10 @@ import { v4 } from 'uuid';
 function NewItemDetail(props) {
   function handleNewItemSubmission(e) {
     e.preventDefault();
-    const itemId = e.target.id.value;
+    // const itemId = e.target.id.value;
     props.onNewItemCreation({
       name: e.target.name.value,
       price: e.target.price.value,
-      pieces: e.target.pieces.value,
       quantity: parseInt(e.target.quantity.value),
       imgSrc: e.target.imgSrc.value,
       id: v4()
@@ -31,11 +30,6 @@ function NewItemDetail(props) {
             type="text"
             name="price"
             placeholder="Price" />
-          <label>Pieces: </label>
-          <input
-            type="text"
-            name="pieces"
-            placeholder="Pieces" />
           <label>Quantity: </label>
           <input
             type="number"

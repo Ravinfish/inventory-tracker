@@ -38,7 +38,7 @@ class InventoryControl extends React.Component {
           id: v4()
         },
         {
-          name: 'Sunfloweers',
+          name: 'Sunflowers',
           price: '$12.99',
           pieces: '191',
           quantity: '30',
@@ -46,7 +46,7 @@ class InventoryControl extends React.Component {
           id: v4()
         },
       ],
-      bagItems: []
+  
     };
   }
 

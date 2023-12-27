@@ -1,8 +1,8 @@
 import React from "react";
 import StockList from "./StockList";
 import { v4 } from 'uuid';
-import NewItemDetai from "./NewItemForm";
-import StockDetail from "./StockDetail";
+import NewItemDetail from "./NewItemForm";
+// import StockDetail from "./StockDetail";
 
 class InventoryControl extends React.Component {
 
@@ -124,7 +124,7 @@ class InventoryControl extends React.Component {
     if (this.state.newItemFormVOP) {
     currentVisibleState = (
       <>
-        <NewItemDetai onNewItemCreation={this.handleAddNewItemToInventoryClick} />
+        <NewItemDetail onNewItemCreation={this.handleAddNewItemToInventoryClick} />
         <div className="new-item-button">
           <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
         </div>
@@ -133,18 +133,18 @@ class InventoryControl extends React.Component {
       const selectedItem = this.state.masterInventoryList.find(
         (item) => item.id === this.state.selectedId
       );
-      currentVisibleState = (
-        <>
-          <StockDetail
-          onItemEdit={this.handleEditItem}
-          onDelete={this.handleDeletedItem}
-          selectedItemId={this.state.selectedId}
-          selectedDetails={selectedItem}
-          />
-          <div className="new-item-button">
-            <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
-          </div>
-      </>)
+      // currentVisibleState = (
+      //   <>
+      //     <StockDetail
+      //     onItemEdit={this.handleEditItem}
+      //     onDelete={this.handleDeletedItem}
+      //     selectedItemId={this.state.selectedId}
+      //     selectedDetails={selectedItem}
+      //     />
+      //     <div className="new-item-button">
+      //       <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
+      //     </div>
+      // </>)
     } else currentVisibleState = (
       <>
         <StockList

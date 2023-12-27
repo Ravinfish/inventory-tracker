@@ -1,7 +1,7 @@
 import React from "react";
 import StockList from "./StockList";
 import { v4 } from 'uuid';
-import NewStockDetail from "./NewItemForm";
+import NewItemDetai from "./NewItemForm";
 import StockDetail from "./StockDetail";
 
 class InventoryControl extends React.Component {
@@ -124,7 +124,7 @@ class InventoryControl extends React.Component {
     if (this.state.newItemFormVOP) {
     currentVisibleState = (
       <>
-        <NewStockDetail onNewItemCreation={this.handleAddNewItemToInventoryClick} />
+        <NewItemDetai onNewItemCreation={this.handleAddNewItemToInventoryClick} />
         <div className="new-item-button">
           <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
         </div>

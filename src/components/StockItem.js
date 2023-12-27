@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 function StockItems({ name, price, imgSrc, quantity, id, addToBag, handleUpdate }) {
   const [quantityRemaining, setQuantityRemaining] = useState(quantity);
-
+  
   const handleBagClick = () => {
     if (quantityRemaining > 0) {
       setQuantityRemaining((prevQuantity) => prevQuantity - 1);

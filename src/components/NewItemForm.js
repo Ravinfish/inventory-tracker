@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
 
-function NewStockDetail(props) {
-  function handleNewStockSubmission(e) {
+function NewItemDetail(props) {
+  function handleNewItemSubmission(e) {
     e.preventDefault();
     const itemId = e.target.id.value;
     props.onNewItemCreation({
@@ -20,7 +20,7 @@ function NewStockDetail(props) {
     <React.Fragment>
       <div className="input-form">
         <h2>Add New Item</h2>
-        <form onSubmit={handleNewStockSubmission}>
+        <form onSubmit={handleNewItemSubmission}>
           <label>Name: </label>
           <input
             type="text"
@@ -54,8 +54,8 @@ function NewStockDetail(props) {
   );
 }
   
-  NewStockDetail.propTypes = {
-  
+  NewItemDetail.propTypes = {
+    onNewItemCreation: PropTypes.func.isRequired,
   };
 
-  export default NewStockDetail;
+  export default NewItemDetail;

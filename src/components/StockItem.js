@@ -5,11 +5,12 @@ function StockItems({ name, price, imgSrc, quantity, id, addToBag, handleUpdate 
   const [quantityRemaining, setQuantityRemaining] = useState(quantity);
   
   const handleBagClick = () => {
+    console.log("addToBag clicked with id:", id)
     if (quantityRemaining > 0) {
       setQuantityRemaining((prevQuantity) => prevQuantity - 1);
-      addToBag(name, price, id);
+      addToBag(id);
     } else {
-
+        // Handle case when quantityRemaining is 0
     }
   };
 
@@ -21,7 +22,7 @@ function StockItems({ name, price, imgSrc, quantity, id, addToBag, handleUpdate 
     <div id="stockItem">
       <img src={imgSrc} alt={name} />
       <p>{name} - {price}</p>
-      <p>Quantity: {quantity}</p>
+      <p>Quantity: {quantityRemaining}</p>
       <button onClick={handleBagClick}>Add to Bag!</button>
       <button onClick={handleUpdateClick}>Update/View Bag Details</button>
       <hr />

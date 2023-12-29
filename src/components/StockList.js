@@ -12,7 +12,7 @@ function StockList(props){
       name={item.name}
       price={item.price}
       pieces={item.pieces}
-      quantityRemaining={item.quantity}
+      quantity={item.quantityRemaining}
       id={item.id}
       addToBag={props.addToBag}
       handleUpdate={props.handleUpdate}

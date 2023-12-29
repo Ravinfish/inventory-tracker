@@ -2,7 +2,7 @@ import React from "react";
 import StockList from "./StockList";
 import { v4 } from 'uuid';
 import NewItemDetail from "./NewItemForm";
-// import StockDetail from "./StockDetail";
+import StockDetail from "./StockDetail";
 
 class InventoryControl extends React.Component {
 
@@ -46,12 +46,12 @@ class InventoryControl extends React.Component {
           id: v4()
         },
       ],
-  
+
     };
   }
 
   handleNewItemClick = () => {
-    this.setState(prevState => ({ newItemFormVOP: !prevState.newItemFormVOP}));
+    this.setState(prevState => ({ newItemFormVOP: !prevState.newItemFormVOP }));
   }
 
   handleAddNewItemToInventoryClick = (newInventory) => {
@@ -70,7 +70,7 @@ class InventoryControl extends React.Component {
           name: updatedInventory.name,
           price: updatedInventory.price,
           pieces: updatedInventory.pieces,
-          quantity:updatedInventory.quantity,
+          quantity: updatedInventory.quantity,
           imgSrc: updatedInventory.imgSrc
         };
       }
@@ -106,45 +106,37 @@ class InventoryControl extends React.Component {
     });
   };
 
-  handleReturnToInventoryClick = ()=> {
+  handleReturnToInventoryClick = () => {
     if (this.state.newItemFormVOP) {
-      this.setState(prevState => ({ newItemFormVOP: !prevState.newItemFormVOP })); 
+      this.setState(prevState => ({ newItemFormVOP: !prevState.newItemFormVOP }));
     } else this.setState(prevState => ({ itemDetailVOP: !prevState.itemDetailVOP }));
-  }
-
- handleDeletedItem = (itemId) => {
-  this.setState((prevState) => ({
-    masterInventoryList: prevState.masterInventoryList.filter((item) => item.id !== itemId),
-    itemDetailVOP: false,
-  }));
- };
+  };
 
   render() {
     let currentVisibleState = null;
     if (this.state.newItemFormVOP) {
-    currentVisibleState = (
-      <>
-        <NewItemDetail onNewItemCreation={this.handleAddNewItemToInventoryClick} />
-        <div className="new-item-button">
-          <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
-        </div>
+      currentVisibleState = (
+        <>
+          <NewItemDetail onNewItemCreation={this.handleAddNewItemToInventoryClick} />
+          <div className="new-item-button">
+            <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
+          </div>
         </>)
     } else if (this.state.itemDetailVOP) {
       const selectedItem = this.state.masterInventoryList.find(
         (item) => item.id === this.state.selectedId
       );
-      // currentVisibleState = (
-      //   <>
-      //     <StockDetail
-      //     onItemEdit={this.handleEditItem}
-      //     onDelete={this.handleDeletedItem}
-      //     selectedItemId={this.state.selectedId}
-      //     selectedDetails={selectedItem}
-      //     />
-      //     <div className="new-item-button">
-      //       <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
-      //     </div>
-      // </>)
+      currentVisibleState = (
+        <>
+          <StockDetail
+            onItemEdit={this.handleEditItem}
+            selectedItemId={this.state.selectedId}
+            selectedDetails={selectedItem}
+          />
+          <div className="new-item-button">
+            <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
+          </div>
+        </>)
     } else currentVisibleState = (
       <>
         <StockList
@@ -155,17 +147,17 @@ class InventoryControl extends React.Component {
         <div className="new-item-button">
           <button onClick={this.handleNewItemClick}>New Stock Item</button>
         </div>
-        </>)
+      </>)
 
-        return (
-          <React.Fragment>
-            {currentVisibleState}
-          </React.Fragment>
-        );
-        
+    return (
+      <React.Fragment>
+        {currentVisibleState}
+      </React.Fragment>
+    );
+
   }
 }
 
 
 
-        export default InventoryControl;
+export default InventoryControl;

@@ -5,7 +5,6 @@ function StockItems({ name, price, imgSrc, quantity, id, addToBag, handleUpdate 
   const [quantityRemaining, setQuantityRemaining] = useState(quantity);
   
   const handleBagClick = () => {
-    console.log("addToBag clicked with id:", id)
     if (quantityRemaining > 0) {
       setQuantityRemaining((prevQuantity) => prevQuantity - 1);
       addToBag(id);
@@ -15,7 +14,7 @@ function StockItems({ name, price, imgSrc, quantity, id, addToBag, handleUpdate 
   };
 
   const handleUpdateClick = () => {
-    handleUpdate(name, price, id);
+    handleUpdate(id);
   };
 
   return (
@@ -31,9 +30,10 @@ function StockItems({ name, price, imgSrc, quantity, id, addToBag, handleUpdate 
 }
 
 StockItems.propTypes = {
-  name: PropTypes.string.isRequired,
-  price: PropTypes.string.isRequired,
+  // name: PropTypes.string.isRequired,
+  // price: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  // quantity: PropTypes.number.isRequired,
   addToBag: PropTypes.func.isRequired,
   handleUpdate: PropTypes.func.isRequired
 };

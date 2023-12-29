@@ -9,7 +9,6 @@ function StockDetail(props) {
     props.onItemEdit({
       name: e.target.name.value,
       price: e.target.price.value,
-      pieces: e.target.pieces.value,
       quantity: parseInt(e.target.quantity.value),
       imgSrc: e.target.imgSrc.value,
       id: itemId
@@ -32,11 +31,6 @@ function StockDetail(props) {
             type="text"
             name="price"
             defaultValue={onItemEdit.price} />
-          <label>Pieces: </label>
-          <input
-            type="text"
-            name="pieces"
-            defaultValue={onItemEdit.pieces} />
           <label>Quantity: </label>
           <input
             type="number"

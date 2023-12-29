@@ -69,7 +69,6 @@ class InventoryControl extends React.Component {
           ...item,
           name: updatedInventory.name,
           price: updatedInventory.price,
-          pieces: updatedInventory.pieces,
           quantity: updatedInventory.quantity,
           imgSrc: updatedInventory.imgSrc
         };

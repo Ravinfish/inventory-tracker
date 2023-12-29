@@ -21,9 +21,13 @@ function StockItems({ name, price, imgSrc, quantity, id, addToBag, handleUpdate 
     <div id="stockItem">
       <img src={imgSrc} alt={name} />
       <p>{name} - {price}</p>
-      <p>Quantity: {quantityRemaining}</p>
+      {quantityRemaining > 0 ? (
+        <p>Quantity: {quantityRemaining}</p>
+      ) : (
+        <p style={{ color: "red" }}>Out of Stock</p>
+      )}
       <button onClick={handleBagClick}>Add to Bag!</button>
-      <button onClick={handleUpdateClick}>Update/View Bag Details</button>
+      <button onClick={handleUpdateClick}>Edit/Update Item</button>
       <hr />
     </div>
   );

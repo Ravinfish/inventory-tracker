@@ -2,15 +2,18 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 function StockDetail(props) {
-  const { onItemEdit } = props;
+  const { onItemEdit, selectedDetails } = props;
+
   function handleStockDetailSubmission(e) {
     e.preventDefault();
     const itemId = e.target.id.value;
+    const { name, price, quantity } = props.onItemEdit;
+
     props.onItemEdit({
-      name: e.target.name.value,
-      price: e.target.price.value,
-      quantity: parseInt(e.target.quantity.value),
-      imgSrc: e.target.imgSrc.value,
+      name: e.target.name.value || name,
+      price: e.target.price.value || price,
+      quantity: parseInt(e.target.quantity.value) || quantity,
+      // imgSrc: e.target.imgSrc.value,
       id: itemId
     });
   }
@@ -19,28 +22,28 @@ function StockDetail(props) {
   return (
     <React.Fragment>
       <div className="input-form">
-        <h2>Currently Viewing / Editing {onItemEdit.name}</h2>
+        <h2>Currently Viewing / Editing {selectedDetails.name}</h2>
         <form onSubmit={handleStockDetailSubmission}>
           <label>Name: </label>
           <input
             type="text"
             name="name"
-            defaultValue={onItemEdit.name} />
+            defaultValue={selectedDetails.name} />
           <label>Price: </label>
           <input
             type="text"
             name="price"
-            defaultValue={onItemEdit.price} />
+            defaultValue={selectedDetails.price} />
           <label>Quantity: </label>
           <input
             type="number"
             name="quantity"
-            defaultValue={onItemEdit.quantity} />
-          <label>Image: </label>
+            defaultValue={selectedDetails.quantity} />
+          {/* <label>Image: </label>
           <input
             type="text"
             name="imgSrc"
-            defaultValue={onItemEdit.imgSrc} />
+            defaultValue={selectedDetails.imgSrc} /> */}
           <br></br>
           <button type="submit">Save Changes</button>
         </form>

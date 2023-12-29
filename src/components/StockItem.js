@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-function StockItems({ name, price, imgSrc, quantity, id, addToBag, handleUpdate }) {
+function StockItems({ name, price, quantity, id, addToBag, handleUpdate }) {
   const [quantityRemaining, setQuantityRemaining] = useState(quantity);
   
   const handleBagClick = () => {
@@ -19,7 +19,7 @@ function StockItems({ name, price, imgSrc, quantity, id, addToBag, handleUpdate 
 
   return (
     <div id="stockItem">
-      <img src={imgSrc} alt={name} />
+      {/* <img src={imgSrc} alt={name} /> */}
       <p>{name} - {price}</p>
       {quantityRemaining > 0 ? (
         <p>Quantity: {quantityRemaining}</p>

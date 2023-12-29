@@ -70,7 +70,7 @@ class InventoryControl extends React.Component {
           name: updatedInventory.name !== undefined ? updatedInventory.name : item.name,
           price: updatedInventory.price !== undefined ? updatedInventory.price : item.price,
           quantity: updatedInventory.quantity !== undefined ? updatedInventory.quantity : item.quantity,
-          imgSrc: updatedInventory.imgSrc !== undefined ? updatedInventory.imgSrc : item.imgSrc
+          // imgSrc: updatedInventory.imgSrc !== undefined ? updatedInventory.imgSrc : item.imgSrc
         };
       }
       return item;

@@ -19,13 +19,13 @@ class NewItemDetail extends Component {
 
   handleNewItemSubmission = (e) => {
     e.preventDefault();
-  
+
     const { selectedItemId, itemsInStock, onNewItemCreation } = this.props;
     const existingItem = itemsInStock.find((item) => item.id === selectedItemId) || {};
 
     console.log(this.state);
     console.log(existingItem);
-  
+
     const updatedItem = {
       id: selectedItemId || v4(),
       name: this.state.name || existingItem.name || "",
@@ -34,13 +34,13 @@ class NewItemDetail extends Component {
       quantity: this.state.quantity !== "" ? parseInt(this.state.quantity, 10) : existingItem.quantity || 0,
 
     };
-  
+
     onNewItemCreation(updatedItem);
   };
 
   handleInputChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    
+
   }
 
   render() {

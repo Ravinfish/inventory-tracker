@@ -20,8 +20,8 @@ function StockItems({ name, price, pieces, quantity, id, addToBag, handleUpdate 
   return (
     <div id="stockItem">
       {/* <img src={imgSrc} alt={name} /> */}
-      <p>{name} - {price}</p>
-      <p>{pieces}</p>
+      <p>{name} - ${price}</p>
+      <p>{pieces} pieces</p>
       {quantityRemaining > 0 ? (
         <p>Quantity: {quantityRemaining}</p>
       ) : (

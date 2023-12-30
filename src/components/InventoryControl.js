@@ -16,7 +16,7 @@ class InventoryControl extends React.Component {
         {
           name: 'Wildflower Bouquet',
           price: '$59.99',
-          pieces: '939',
+          pieces: '939 pieces',
           quantity: '12',
           // imgSrc: "",
           id: v4()
@@ -24,7 +24,7 @@ class InventoryControl extends React.Component {
         {
           name: 'Dried Flower Centerpiece',
           price: '$49.99',
-          pieces: '812',
+          pieces: '812 pieces',
           quantity: '10',
           // imgSrc: "",
           id: v4()
@@ -32,7 +32,7 @@ class InventoryControl extends React.Component {
         {
           name: 'Bird of Paradise',
           price: '$99.99',
-          pieces: '1173',
+          pieces: '1173 pieces',
           quantity: '5',
           // imgSrc: "",
           id: v4()
@@ -40,7 +40,7 @@ class InventoryControl extends React.Component {
         {
           name: 'Sunflowers',
           price: '$12.99',
-          pieces: '191',
+          pieces: '191 pieces',
           quantity: '30',
           // imgSrc: "",
           id: v4()
@@ -55,6 +55,7 @@ class InventoryControl extends React.Component {
   }
 
   handleAddNewItemToInventoryClick = (newInventory) => {
+    console.log(newInventory)
     const newMasterInventoryList = this.state.masterInventoryList.concat(newInventory);
     this.setState({
       masterInventoryList: newMasterInventoryList,
@@ -116,7 +117,11 @@ class InventoryControl extends React.Component {
     if (this.state.newItemFormVOP) {
       currentVisibleState = (
         <>
-          <NewItemDetail onNewItemCreation={this.handleAddNewItemToInventoryClick} />
+          <NewItemDetail
+            onNewItemCreation={this.handleAddNewItemToInventoryClick}
+            itemsInStock={this.state.masterInventoryList}
+            selectedId={this.state.selectedId}
+          />
           <div className="new-item-button">
             <button onClick={this.handleReturnToInventoryClick}>Return to Inventory</button>
           </div>

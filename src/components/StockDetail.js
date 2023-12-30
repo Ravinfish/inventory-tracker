@@ -7,11 +7,12 @@ function StockDetail(props) {
   function handleStockDetailSubmission(e) {
     e.preventDefault();
     const itemId = e.target.id.value;
-    const { name, price, quantity } = props.onItemEdit;
+    const { name, price, pieces, quantity } = props.onItemEdit;
 
     props.onItemEdit({
       name: e.target.name.value || name,
       price: e.target.price.value || price,
+      pieces: parseInt(e.target.pieces.value) || pieces,
       quantity: parseInt(e.target.quantity.value) || quantity,
       // imgSrc: e.target.imgSrc.value,
       id: itemId
@@ -34,6 +35,11 @@ function StockDetail(props) {
             type="text"
             name="price"
             defaultValue={selectedDetails.price} />
+          <label>Pieces: </label>
+          <input
+            type="text"
+            name="pieces"
+            defaultValue={selectedDetails.pieces} />
           <label>Quantity: </label>
           <input
             type="number"

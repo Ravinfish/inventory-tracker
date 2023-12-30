@@ -8,12 +8,11 @@ function StockList(props) {
       <hr />
       {props.itemsInStock.map((item, index) =>
         <StockItem
-          // imgSrc={item.imgSrc}
-          // name={item.name}
-          // price={item.price}
-          // quantity={item.quantity}
-          // id={item.id}
-          {...item}
+          name={item.name}
+          price={item.price}
+          pieces={item.pieces}
+          quantity={parseInt(item.quantity, 10)}
+          id={item.id}
           addToBag={props.addToBag}
           handleUpdate={props.handleUpdate}
           key={index} />

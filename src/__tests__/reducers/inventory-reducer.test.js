@@ -1,4 +1,4 @@
-import inventoryReducer from './inventoryReducer';
+import inventoryReducer from '../reducers/inventory-reducer.js';
 
 describe('inventoryReducer', () => {
   it('should handle ADD_TO_INVENTORY action', () => {

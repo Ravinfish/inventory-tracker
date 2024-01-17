@@ -1,13 +1,15 @@
 import React from 'react';
-import Header from './Header';
+import { Provider } from 'react-redux';
+import store from '../reducers/store';
 import InventoryControl from './InventoryControl';
 
 function App() {
   return (
-    <React.Fragment>
-      <Header />
-      <InventoryControl />
-    </React.Fragment>
+    <Provider store={store}>
+      <div className='App'>
+        <InventoryControl />
+      </div>
+    </Provider>
   );
 }
 

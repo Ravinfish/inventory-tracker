@@ -1,4 +1,5 @@
-import inventoryReducer from '../reducers/inventory-reducer.js';
+import inventoryReducer from "../../reducers/inventory-reducer";
+import { addToInventory } from "../../reducers/inventoryActions";
 
 describe('inventoryReducer', () => {
   it('should handle ADD_TO_INVENTORY action', () => {
@@ -6,19 +7,19 @@ describe('inventoryReducer', () => {
       masterInventoryList: [],
     };
 
-    const action = {
-      type: 'ADD_TO_INVENTORY',
-      payload: {
-        id: '123',
-        name: 'Test Item',
-        price: '19.99',
-        pieces: '10 pieces',
-        quantity: 5,
-      },
+    const itemToAdd = {
+      name: 'Test Item',
+      price: '19.99',
+      pieces: '10 pieces',
+      quantity: 5,
+      id: 'abc123',
     };
 
+    const action = addToInventory(itemToAdd);
     const nextState = inventoryReducer(initialState, action);
 
-    expect(nextState.masterInventoryList).toHaveLength(1);
-  })
-})
+    expect(nextState).toEqual({
+      masterInventoryList: [itemToAdd],
+    });
+  });
+});

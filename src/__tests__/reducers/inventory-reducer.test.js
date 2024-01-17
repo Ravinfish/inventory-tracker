@@ -23,6 +23,35 @@ describe('inventoryReducer', () => {
     });
   });
 
+  it('should handle DECREASE_QUANTITY action', () => {
+    const initialState = {
+      masterInventoryList: [
+        {
+          name: 'Exsisting Item',
+          price: '$29.99',
+          pieces: '8 pieces',
+          quantity: 3,
+          id: 'existingItem',
+        },
+      ],
+    };
+
+    const action = decreaseQuantity('existingItem');
+    const nextState = inventoryReducer(initialState, action);
+
+    expect(nextState).toEqual({
+      masterInventoryList: [
+        {
+          name: 'Exsisting Item',
+          price: '$29.99',
+          pieces: '8 pieces',
+          quantity: 2,
+          id: 'existingItem',
+        },
+      ],
+    });
+  });
+
   it('should handle adding mulitple items to inventory', () => {
     const initialState = {
       masterInventoryList: [],

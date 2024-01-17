@@ -1,5 +1,5 @@
 import inventoryReducer from "../../reducers/inventory-reducer";
-import { addToInventory } from "../../reducers/inventoryActions";
+import { addToInventory, decreaseQuantity } from "../../reducers/inventoryActions";
 
 describe('inventoryReducer', () => {
   it('should handle ADD_TO_INVENTORY action', () => {

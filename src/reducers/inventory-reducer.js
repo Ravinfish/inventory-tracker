@@ -10,6 +10,20 @@ const inventoryReducer = (state = initialState, action) => {
         masterInventoryList: [...state.masterInventoryList, action.payload],
       };
 
+    case 'DECREASE_QUANTITY':
+      return {
+        ...state,
+        masterInventoryList: state.masterInventoryList.map(item => {
+          if (item.id === action.payload.itemId && item.quantity > 0) {
+            return {
+              ...item,
+              quantity: item.quantity - 1,
+            };
+          }
+          return item;
+        }),
+      };
+
       default:
         return state;
   }
